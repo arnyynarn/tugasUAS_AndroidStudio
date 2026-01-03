@@ -1,6 +1,11 @@
 package com.arniyuniarni.recycleview
 
+import android.app.Dialog
 import android.os.Bundle
+import android.view.Window
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -25,7 +30,30 @@ class MainActivity : AppCompatActivity() {
 
         binding.list.adapter = AdapterAktor(this, listAktor, object  : AdapterAktor.OnClickListener{
             override fun detailData(item: Aktor?) {
-                    TODO("Not yet implemented")
+                Dialog(this@MainActivity).apply {
+                    requestWindowFeature(Window.FEATURE_NO_TITLE)
+                    setCancelable(true)
+                    setContentView(R.layout.detail_data_aktor)
+
+                    val image = this.findViewById<ImageView>(R.id.image_aktor)
+                    val nama = this.findViewById<TextView>(R.id.txtNamaAktor)
+                    val pemeran = this.findViewById<TextView>(R.id.txtPemeran)
+                    val tinggi = this.findViewById<TextView>(R.id.txtTinggi)
+                    val tempatlahir = this.findViewById<TextView>(R.id.txtTL)
+                    val tanggallahir = this.findViewById<TextView>(R.id.txtTgl)
+                    val btn = this.findViewById<Button>(R.id.btnClose)
+
+                    image.setImageResource(item?.foto ?:0)
+                    nama.text = "${item?.nama}"
+                    nama.text = "${item?.pemeran}"
+                    nama.text = "${item?.tinggi}"
+                    nama.text = "${item?.tempatLahir}"
+                    nama.text = "${item?.tglLahir}"
+
+                    btn.setOnClickListener {
+                        this.dismiss()
+                    }
+                }
             }
 
         })
