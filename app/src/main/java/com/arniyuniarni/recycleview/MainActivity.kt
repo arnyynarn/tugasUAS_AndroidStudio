@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.list.adapter = AdapterAktor(this, listAktor, object  : AdapterAktor.OnClickListener{
             override fun detailData(item: Aktor?) {
-                TODO("Not yet implemented")
+                    TODO("Not yet implemented")
             }
 
         })
